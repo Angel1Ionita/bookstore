@@ -31,7 +31,7 @@ erDiagram
         int pages
         float price
         string description
-        int average_rating
+        float average_rating
         int stock
         string image
     }
@@ -64,7 +64,7 @@ erDiagram
         long rating_id PK
         long customer_id FK
         long book_id FK
-        int rating
+        float rating
     }
 
     REVIEW {
