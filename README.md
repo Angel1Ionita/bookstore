@@ -18,7 +18,8 @@ erDiagram
         string email
         string first_name
         string last_name
-        string passwordHash
+        string password
+        string role
     }
 
     BOOK {
@@ -82,7 +83,7 @@ erDiagram
         string status
     }
 
-    ORDER_ITEMS {
+    ORDER_ITEM {
         long order_item_id PK
         long order_id FK
         long book_id FK
@@ -104,17 +105,17 @@ erDiagram
     BOOK }o--o{ AUTHOR : written_by
     BOOK }o--o{ CATEGORY : included_in
 
-    RATING }o--o{ BOOK : rated_by
-    RATING }o--o{ CUSTOMER : adds
+    RATING }o--|| BOOK : rated_by
+    RATING }o--|| CUSTOMER : adds
 
-    REVIEW }o--o{ BOOK : reviewed_by
-    REVIEW }o--o{ CUSTOMER : adds
+    REVIEW }o--|| BOOK : reviewed_by
+    REVIEW }o--|| CUSTOMER : adds
 
     PUBLISHER ||--o{ BOOK : publishes
 
     CUSTOMER ||--o{ ORDER : places
-    ORDER ||--o{ ORDER_ITEMS : contains
-    BOOK ||--o{ ORDER_ITEMS : included_in
+    ORDER ||--o{ ORDER_ITEM : contains
+    BOOK ||--o{ ORDER_ITEM : included_in
 
     ORDER ||--|| PAYMENT : paid_by
 ```
